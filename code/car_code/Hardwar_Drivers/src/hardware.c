@@ -7,7 +7,6 @@
 
 #include "hardware.h"
 
-short mpu_temp;
 float BattVolt;
 extern float roll,pitch,yaw;
 
@@ -23,7 +22,7 @@ void Hardware_Init(void)
 
 /******************USART Init***********************/	
 	
-	USART1_Init();
+	//USART1_Init();
 	//printf("USART1 bandrate 115200bps \r\n");
 	
 /******************ADC Init*************************/	
@@ -31,6 +30,12 @@ void Hardware_Init(void)
 	Volt_ADC_Init();
 	Delay_ms(5);
 	BattVolt=Get_BattVolt();
+	if(BattVolt<=VOLT_STOP_VALUE)
+	{
+		Play_Beep();
+		LED_OFF();
+		while(1);
+	}
 	//printf("Battery voltage: %fV\r\n", BattVolt);
 	
 /*****************Motor Init************************/	
@@ -54,16 +59,14 @@ void Hardware_Init(void)
 		mpu_dmp_get_data(&pitch,&roll,&yaw);
 		Delay_ms(1);
 	}
+	LED_ON();
   //printf("MPU6050 DMP init successful!\r\n");	
-	//Play_NokiaTune();
 	
 /******************Si24r1 Init**********************/
-	
 	SI24R1_Init();
 	while(!SI24R1_Check())
 	{
 		LED_OFF();
-		//Delay_ms(1);
 	}
 	LED_ON();
 	//printf("Si24r1 init successful!\r\n");

@@ -1,7 +1,7 @@
 Dependencies for Project 'sb_main_ctrl', Target 'sb_main_ctrl': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (.\Source\main.c)(0x5F341314)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\Hardwar_Drivers\inc\hardware.h)(0x5F33802D)
+F (.\Source\main.c)(0x5F366531)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\Hardwar_Drivers\inc\hardware.h)(0x5F3664D4)
 I (.\CMSIS\device\stm32f10x.h)(0x4D783CB4)
 I (.\CMSIS\core\core_cm3.h)(0x4D523B58)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5EC775FC)
@@ -102,7 +102,7 @@ I (.\Hardwar_Drivers\inc\mpuiic.h)(0x5ECF45FE)
 I (.\Hardwar_Drivers\inc\systick.h)(0x5ECE2375)
 I (.\Hardwar_Drivers\inc\usart.h)(0x5EDA4C34)
 I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5EC775FC)
-F (.\Hardwar_Drivers\src\si24r1.c)(0x5F33A049)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\si24r1.o --omf_browse .\objects\si24r1.crf --depend .\objects\si24r1.d)
+F (.\Hardwar_Drivers\src\si24r1.c)(0x5F366E8E)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\si24r1.o --omf_browse .\objects\si24r1.crf --depend .\objects\si24r1.d)
 I (.\Hardwar_Drivers\inc\si24r1.h)(0x5F32743E)
 I (.\CMSIS\device\stm32f10x.h)(0x4D783CB4)
 I (.\CMSIS\core\core_cm3.h)(0x4D523B58)
@@ -272,7 +272,7 @@ I (.\StdPeriph_Drivers\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\misc.h)(0x4D783BB4)
-F (.\Hardwar_Drivers\src\drv8833c.c)(0x5F3388B6)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\drv8833c.o --omf_browse .\objects\drv8833c.crf --depend .\objects\drv8833c.d)
+F (.\Hardwar_Drivers\src\drv8833c.c)(0x5F367301)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\drv8833c.o --omf_browse .\objects\drv8833c.crf --depend .\objects\drv8833c.d)
 I (.\Hardwar_Drivers\inc\drv8833c.h)(0x5F2E936B)
 I (.\CMSIS\device\stm32f10x.h)(0x4D783CB4)
 I (.\CMSIS\core\core_cm3.h)(0x4D523B58)
@@ -338,8 +338,8 @@ I (.\StdPeriph_Drivers\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\misc.h)(0x4D783BB4)
-F (.\Hardwar_Drivers\src\hardware.c)(0x5F340BC8)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\hardware.o --omf_browse .\objects\hardware.crf --depend .\objects\hardware.d)
-I (.\Hardwar_Drivers\inc\hardware.h)(0x5F33802D)
+F (.\Hardwar_Drivers\src\hardware.c)(0x5F36A6EA)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\hardware.o --omf_browse .\objects\hardware.crf --depend .\objects\hardware.d)
+I (.\Hardwar_Drivers\inc\hardware.h)(0x5F3664D4)
 I (.\CMSIS\device\stm32f10x.h)(0x4D783CB4)
 I (.\CMSIS\core\core_cm3.h)(0x4D523B58)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5EC775FC)
@@ -839,7 +839,7 @@ I (.\StdPeriph_Drivers\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\StdPeriph_Drivers\inc\misc.h)(0x4D783BB4)
-F (.\Startup\startup_stm32f10x_md.s)(0x5F317804)(--cpu Cortex-M3 -g --apcs=interwork -Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 531" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
+F (.\Startup\startup_stm32f10x_md.s)(0x5F3672E2)(--cpu Cortex-M3 -g --apcs=interwork -Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 531" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
 F (.\CMSIS\core\core_cm3.c)(0x4C0C587E)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5EC775FC)
 F (.\CMSIS\device\system_stm32f10x.c)(0x4D783CB0)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Source -I .\CMSIS\device -I .\CMSIS\core -I .\Hardwar_Drivers\inc -I .\SEGGER_RTT\RTT -I .\Hardwar_Drivers -I .\Hardwar_Drivers\src\eMPL-Id:\Keil_v5\packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)

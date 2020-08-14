@@ -11,9 +11,14 @@
 #include "hardware.h"
 #include "pid.h"
 
+extern float BattVolt;
+uint8_t sleepFlag=0;
+uint16_t fallAlarmCount=0;
+int16_t sleepTimeCount=0;
+int32_t stopTimeCount=0;
+
 float pitch,roll,yaw;
 short gyrox,gyroy,gyroz;
-short accex,accey,accez;
 
 int16_t leftEncoder;
 int16_t rightEncoder;
@@ -28,9 +33,6 @@ int16_t maxMove=75;
 int16_t maxTurn=2000;
 
 uint16_t rx_data[2]={2040,2040};
-//Count every loop until reach a setting value and
-//then reset the rx_data if always no data rx.
-int16_t timeNoRx=0;  
 
 int main(void)
 {	
@@ -45,15 +47,16 @@ int main(void)
 	mpu_dmp_get_data(&pitch,&roll,&yaw);
 	if(roll>30||roll<-30)
 	{
-		//Play_Beep();
+		Play_Beep();
 		while(1)
 		{
 			LED_OFF();
-			Delay_ms(500);
+			Delay_ms(1000);
 			LED_ON();
-			Delay_ms(500);
+			Delay_ms(1000);
 		}
 	}
+	Play_NokiaTune();
 	
 /****************************************************************
  *	
@@ -64,22 +67,51 @@ int main(void)
 	Delay_ms(100);
 	while(1)
 	{
+		//Monitor battery volt.
+		BattVolt=Get_BattVolt();
+		if(BattVolt<=VOLT_STOP_VALUE)
+		{
+			Play_Beep();
+			LED_OFF();
+			while(1);
+		}
+		
 		//Receive Datas from Remote Controller
 		if(!SI24R1_RxPacket((uint8_t *)rx_data))
 		{
-			timeNoRx=0;
+			sleepTimeCount=0;
+			stopTimeCount=0;
+			LED_ON();
 		}
 		else
 		{
-			timeNoRx++;
+			sleepTimeCount++;
+			stopTimeCount++;
 		}
 		
-		//Determine reset the rx_data or not when reach 500ms.
-		if(timeNoRx>=300)
+		//Reset the rx_data when reach 500ms.
+		if(sleepTimeCount>=SLEEP_TIME)
 		{
-			timeNoRx=0;
+			sleepTimeCount=0;
 			rx_data[0]=2040;
 			rx_data[1]=2040;
+			if(sleepFlag==0)
+			{
+				LED_OFF();
+				sleepFlag=1;
+			}
+			else
+			{
+				LED_ON();
+				sleepFlag=0;
+			}
+		}
+		
+		//Shutdown power when reach this time.
+		if(stopTimeCount>=STOP_TIME)
+		{
+			LED_OFF();
+			while(1);
 		}
 		
 		//Caculate the carMove value
@@ -110,7 +142,6 @@ int main(void)
 		//Car control
 		mpu_dmp_get_data(&pitch,&roll,&yaw);
 		MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);
-		MPU_Get_Accelerometer(&accex,&accey,&accez);
 
 		leftEncoder=Read_Encoder(LEFT_ENCODER);
 		rightEncoder=Read_Encoder(RIGHT_ENCODER);
@@ -120,6 +151,15 @@ int main(void)
 		{
 			Motor_Set(LEFT,0);
 			Motor_Set(RIGHT,0);
+			if(fallAlarmCount>=FALL_ALARM_TIME)
+			{
+				Play_Beep();
+				fallAlarmCount=0;
+			}
+			else
+			{
+				fallAlarmCount++;
+			}
 		}
 		else
 		{
@@ -130,7 +170,7 @@ int main(void)
 			Motor_Set(RIGHT,rightSpeed);
 		}
 		
-		Delay_us(750);
+		Delay_ms(1);
 	}
 	
 }
