@@ -1,0 +1,40 @@
+### Module positions - created on 07/04/20 15:59:17 ###
+### Printed by Pcbnew version pcbnew (5.1.6)-1
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val                    Package                                                 PosX       PosY       Rot  Side
+C7        10nF                   C_0603_1608Metric                                   -25.6235    19.0525  180.0000  bottom
+C8        0.1uF                  C_0603_1608Metric                                   -29.3218    19.0602    0.0000  bottom
+C9        2.2nF                  C_0603_1608Metric                                   -29.4365    11.7985    0.0000  bottom
+C10       0.1uF                  C_0603_1608Metric                                   -31.6000    42.1250  180.0000  bottom
+C11       0.1uF                  C_0603_1608Metric                                   -31.6306    15.8547   90.0000  bottom
+C12       1uF                    C_0603_1608Metric                                   -21.0968    40.2216  270.0000  bottom
+C13       1uF                    C_0603_1608Metric                                   -22.6102    40.2216   90.0000  bottom
+C14       1uF                    C_0603_1608Metric                                   -19.5829    40.2216  270.0000  bottom
+C15       4.7uF                  C_0603_1608Metric                                   -11.7267    40.2292  270.0000  bottom
+C16       2.2uF                  C_0603_1608Metric                                   -10.2103    40.2292  270.0000  bottom
+C17       100uF                  CP_EIA-3528-21_Kemet-B                               -3.2552    16.4744  270.0000  bottom
+C18       1uF                    C_0603_1608Metric                                   -24.5999    40.2234   90.0000  bottom
+C24       0.1uF                  C_0603_1608Metric                                   -27.4269    24.5745  270.0000  bottom
+C27       0.1uF                  C_0603_1608Metric                                   -25.0938    31.3157  180.0000  bottom
+C29       0.1uF                  C_0603_1608Metric                                   -15.8674    22.0497   90.0000  bottom
+C31       0.1uF                  C_0603_1608Metric                                   -14.1500    31.3250  270.0000  bottom
+C32       0.1uF                  C_0603_1608Metric                                   -22.3012    33.7109  270.0000  bottom
+C33       1uF                    C_0603_1608Metric                                   -25.1040    25.3336  180.0000  bottom
+J1        USB_B_Micro            USB_Micro-B_Molex_47346-0001                         -2.9261    36.0528   90.0000  bottom
+J2        SWD                    JST_SH_BM05B-SRSS-TB_1x05-1MP_P1.00mm_Vertical       -2.3571    45.4660  270.0000  bottom
+J3        24RF                   ai-thinker_2.4G_NF03_1.27mm                         -11.6525     9.2558  270.0000  bottom
+J4        Conn_01x30             Hirose_FH12-30S-0.5SH_1x30-1MP_P0.50mm_Horizontal   -17.4651    44.7671    0.0000  bottom
+R8        1.5k                   C_0603_1608Metric                                    -7.5763    33.6750    0.0000  bottom
+R9        10R                    C_0603_1608Metric                                    -7.5763    32.1500  180.0000  bottom
+R10       10R                    C_0603_1608Metric                                    -7.5763    30.6250  180.0000  bottom
+R11       4.7k                   C_0603_1608Metric                                   -27.1602    11.0465   90.0000  bottom
+R12       10k                    R_0603_1608Metric                                   -28.9331    24.5745   90.0000  bottom
+R13       4.7k                   C_0603_1608Metric                                   -24.2672    14.8209  270.0000  bottom
+R14       10k                    R_0603_1608Metric                                   -19.9781    33.7000   90.0000  bottom
+R19       910K                   C_0603_1608Metric                                   -13.2426    40.2292  270.0000  bottom
+S1        EG1218                 SW_SPDT_CK-JS102011SAQN                              -1.0490    26.0553   90.0000  bottom
+U4        STM32F103CBUx          QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm_ThermalVias     -19.2383    27.8020  180.0000  bottom
+U5        MPU6050-Sensor_Motion  QFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm                 -27.9059    15.3892    0.0000  bottom
+Y2        8MHz                   Resonator_SMD_muRata_CSTxExxV-3Pin_3.0x1.1mm        -24.8488    28.3756  270.0000  bottom
+## End

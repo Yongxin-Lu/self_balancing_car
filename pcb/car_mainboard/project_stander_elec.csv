@@ -1,0 +1,39 @@
+Item,Qty,Reference(s),Value,Footprint
+1,1,BZ1,Buzzer,Buzzer_Beeper:PUIAudio_SMT_0825_S_4_R
+2,9,"C1, C7, C11, C18, C24, C27, C29, C31, C32",0.1uF,Capacitor_SMD:C_0603_1608Metric
+3,6,"C2, C4, C14, C16, C20, C22",10uF,Capacitor_SMD:C_0603_1608Metric
+4,1,C3,0.01uf,Capacitor_SMD:C_0603_1608Metric
+5,1,C5,2.2uf,Capacitor_SMD:C_0603_1608Metric
+6,4,"C6, C9, C12, C15",22uF,Capacitor_Tantalum_SMD:CP_EIA-3216-10_Kemet-I_Pad1.58x1.35mm_HandSolder
+7,3,"C8, C10, C21",0.1uf,Capacitor_SMD:C_0603_1608Metric
+8,1,C17,10nF,Capacitor_SMD:C_0603_1608Metric
+9,1,C19,2.2nF,Capacitor_SMD:C_0603_1608Metric
+10,1,C23,100uF,Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B
+11,1,C33,1uF,Capacitor_SMD:C_0603_1608Metric
+12,2,"D1, D2",LED,LED_SMD:LED_0603_1608Metric
+13,1,D3,25%,LED_SMD:LED_0603_1608Metric
+14,1,D4,50%,LED_SMD:LED_0603_1608Metric
+15,1,D5,75%,LED_SMD:LED_0603_1608Metric
+16,2,"D6, D8",100%,LED_SMD:LED_0603_1608Metric
+17,1,D7,1N5819,Diode_SMD:D_SMA
+18,1,J1,USB_B_Micro,Connector_USB:USB_Micro-B_Molex_47346-0001
+19,1,J2,Battery_CON,Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical
+20,1,J3,MOTOR1_CON,Connector_JST:JST_ZE_SM06B-ZESS-TB_1x06-1MP_P1.50mm_Horizontal
+21,1,J5,MOTOR2_CON,Connector_JST:JST_ZE_SM06B-ZESS-TB_1x06-1MP_P1.50mm_Horizontal
+22,1,J6,SWD_CON,Connector_JST:JST_SH_BM05B-SRSS-TB_1x05-1MP_P1.00mm_Vertical
+23,1,J7,2.4G_CON,RF_Module:ai-thinker_2.4G_NF03_1.27mm
+24,1,L4,1uH,Inductor_SMD:L_Abracon_ASPI-0630LR
+25,1,Q3,S8050,Package_TO_SOT_SMD:SOT-23
+26,5,"R1, R4, R5, R10, R11",4.7k,Resistor_SMD:R_0603_1608Metric
+27,4,"R2, R6, R15, R16",200,Resistor_SMD:R_0603_1608Metric
+28,2,"R3, R9",2R,Resistor_SMD:R_0603_1608Metric
+29,6,"R7, R12, R13, R14, R17, R18",10k,Resistor_SMD:R_0603_1608Metric
+30,1,R8,1k,Resistor_SMD:R_0603_1608Metric
+31,1,SW1,SW_Push,Button_Switch_SMD:3x6x3.5_SW_side
+32,1,U1,AMS1117-3.3,Package_TO_SOT_SMD:SOT-223-3_TabPin2
+33,1,U2,IP5306,Package_SO:HSOP-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.1mm_ThermalVias
+34,1,U3,MPU6050,Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm
+35,1,U4,DRV8833PWP,Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias
+36,1,U5,CH340E,Package_SO:MSOP-10_3x3mm_P0.5mm
+37,1,U6,STM32F103C8Tx,Package_QFP:LQFP-48_7x7mm_P0.5mm
+38,1,Y2,8MHz,Crystal:Resonator_SMD_muRata_CSTxExxV-3Pin_3.0x1.1mm

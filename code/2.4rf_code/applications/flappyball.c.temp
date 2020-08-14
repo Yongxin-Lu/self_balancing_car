@@ -1,0 +1,388 @@
+/*
+ * flappyball.c
+ *
+ *  Created on: 2020/7/26
+ *      Author: https://github.com/ArduboyCollection/FlappyBall
+ */
+ 
+#include "flappyball.h"
+#include "flappyball_bitmap.h"
+#include "oled.h"
+#include "adc.h"
+#include <stdlib.h>
+#include <rtthread.h>
+
+ // Storage Vars
+int8_t gameState = 0;
+unsigned int gameScore = 0;
+unsigned int gameHighScore = 0;
+char pipes[2][PIPE_ARRAY_SIZE]; // Row 0 for x values, row 1 for gap location
+int8_t pipeGap = PIPE_GAP_MAX;    // Height of gap between pipes to fly through
+int8_t pipeReduceCount = PIPE_GAP_REDUCE; // Score tracker for pipe gap reduction
+char ballY = BALL_Y_START;      // Floaty's height
+char ballYprev = BALL_Y_START;  // Previous height
+char ballYi = BALL_Y_START;     // Floaty's initial height for the current arc
+int ballV = 0;                  // For height calculations (Vi + ((a * t) / 2))
+int8_t ballFrame = 0;             // Frame count for the current arc
+char ballFlapper = BALL_RADIUS; // Floaty's wing length
+char gameScoreX = 0;
+char gameScoreY = 0;
+int8_t gameScoreRiser = 0;
+
+void Flappyball_Play(void)
+{
+	 //arduboy.setFrameRate(FRAMES_PER_SECOND);
+  OLED_Clear();
+  OLED_ShowPicture(0,0,128,64,floatyball,1);
+  OLED_Refresh();
+  //sound.tones(intro);
+  rt_thread_mdelay(500);
+  OLED_ShowString(18,55,"Press Any Button",FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+  OLED_Refresh();
+
+  while(Check_ButtonsState()); // Wait for any key press
+  debounceButtons();
+
+  //arduboy.initRandomSeed();
+  for (int8_t x = 0; x < PIPE_ARRAY_SIZE; x++) { pipes[0][x] = 0; }  // Set all pipes offscreen
+	
+	while(1)
+	{
+		/*
+		if (!arduboy.nextFrame())
+			return;
+
+		if (arduboy.pressed(LEFT_BUTTON)) { // If the button for sound toggle is pressed
+			if (arduboy.audio.enabled()) {    // If sound is enabled
+				sound.noTone();                 // Stop anything that's playing
+				arduboy.audio.off();            // Mute sounds
+			} else {
+				arduboy.audio.on();             // Enable sound
+				sound.tones(bing);              // Play a sound to indicate sound has been turned on
+			}
+			debounceButtons();                // Wait for button release
+		}*/
+
+		OLED_Clear();
+
+		// ===== State: Wait to begin =====
+		if (gameState == 0) {     // If waiting to begin
+			drawFloor();
+			drawFloaty();
+			drawInfo();             // Display usage info
+
+			if (jumpPressed()) {    // Wait for a jump button press
+				gameState = 1;        // Then start the game
+				//sound.noTone();       // Stop any playing sound
+				beginJump();          // And make Floaty jump
+			}
+		}
+
+		// ===== State: Playing =====
+		if (gameState == 1) {     // If the game is playing
+			// If the ball isn't already rising, check for jump
+			if ((ballYprev <= ballY) && jumpPressed()) {
+				beginJump();          // Jump
+			}
+
+			moveFloaty();
+
+			if (ballY < BALL_RADIUS) {  // If Floaty has moved above the top of the screen
+				ballY = BALL_RADIUS;      // Set position to top
+				startFalling();           // Start falling
+			}
+
+			/*
+			if (arduboy.everyXFrames(PIPE_GEN_FRAMES)) { // Every PIPE_GEN_FRAMES worth of frames
+				generatePipe();                  // Generate a pipe
+			}*/
+
+			for (int8_t x = 0; x < PIPE_ARRAY_SIZE; x++) {  // For each pipe array element
+				if (pipes[0][x] != 0) {           // If the pipe is active
+					pipes[0][x] = pipes[0][x] - PIPE_MOVE_DISTANCE;  // Then move it left
+					if (pipes[0][x] + PIPE_WIDTH < 0) {  // If the pipe's right edge is off screen
+						pipes[0][x] = 0;              // Then set it inactive
+					}
+					if (pipes[0][x] + PIPE_WIDTH == (BALL_X - BALL_RADIUS)) {  // If the pipe passed Floaty
+						gameScore++;                  // Increment the score
+						pipeReduceCount--;            // Decrement the gap reduction counter
+						gameScoreX = BALL_X;                  // Load up the floating text with
+						gameScoreY = ballY - BALL_RADIUS - 8; //  current ball x/y values
+						gameScoreRiser = 15;          // And set it for 15 frames
+						//sound.tones(point);
+					}
+				}
+			}
+
+			if (gameScoreRiser > 0) {  // If we have floating text
+				gameScoreY--;
+				if (gameScoreY >= 0) { // If the score will still be on the screen
+					OLED_ShowString(gameScoreX, gameScoreY,gameScore,FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+					gameScoreX = gameScoreX - 2;
+					gameScoreRiser--;
+				} else {
+					gameScoreRiser = 0;
+				}
+			}
+
+			if (ballY + BALL_RADIUS > (HEIGHT-1)) {  // If the ball has fallen below the screen
+				ballY = (HEIGHT-1) - BALL_RADIUS;      // Don't let the ball go under :O
+				gameState = 2;                        // Game over. State is 2.
+			}
+			// Collision checking
+			for (int8_t x = 0; x < PIPE_ARRAY_SIZE; x++) { // For each pipe array element
+				if (pipes[0][x] != 0) {                 // If the pipe is active (not 0)
+					if (checkPipe(x)) { gameState = 2; }  // If the check is true, game over
+				}
+			}
+
+			drawPipes();
+			drawFloor();
+			drawFloaty();
+
+			// Reduce pipe gaps as the game progresses
+			if ((pipeGap > PIPE_GAP_MIN) && (pipeReduceCount <= 0)) {
+				pipeGap--;
+				pipeReduceCount = PIPE_GAP_REDUCE;  // Restart the countdown
+			}
+		}
+
+		// ===== State: Game Over =====
+		if (gameState == 2) {  // If the gameState is 2 then we draw a Game Over screen w/ score
+			if (gameScore > gameHighScore) { gameHighScore = gameScore; }
+			OLED_Refresh();              // Make sure final frame is drawn
+			//sound.tones(hit);               // Hit sound
+			rt_thread_mdelay(100);                     // Pause for the sound
+			startFalling();                 // Start falling from current position
+			while (ballY + BALL_RADIUS < (HEIGHT-1)) {  // While floaty is still airborne
+				moveFloaty();
+				OLED_Clear();
+				drawPipes();
+				drawFloor();
+				drawFloaty();
+				OLED_Refresh();
+				//while (!arduboy.nextFrame()) { }  // Wait for next frame
+			}
+			//sound.tones(horns);                  // Sound the loser's horn
+			OLED_DrawRect(16,8,96,48, WHITE); // Box border
+			//arduboy.fillRect(17,9,94,46, BLACK); // Black out the inside
+			OLED_ShowPicture(30,12,72,14,gameover,1);
+			OLED_ShowString(50 - getOffset(gameScore),30,gameScore,FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+			OLED_ShowString(62,30,"Score",FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+
+			OLED_ShowString(50 - getOffset(gameHighScore),42,gameHighScore,FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+			OLED_ShowString(62,42,"High",FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+
+			OLED_Refresh();
+			rt_thread_mdelay(1000);         // Give some time to stop pressing buttons
+
+			while (!jumpPressed()) { } // Wait for a jump button to be pressed
+			debounceButtons();
+
+			gameState = 0;       // Then start the game paused
+			//sound.tones(intro);  // Play the intro
+			gameScore = 0;       // Reset score to 0
+			gameScoreRiser = 0;  // Clear the floating score
+			for (int8_t x = 0; x < PIPE_ARRAY_SIZE; x++) { pipes[0][x] = 0; }  // set all pipes inactive
+			ballY = BALL_Y_START;   // Reset to initial ball height
+			pipeGap = PIPE_GAP_MAX; // Reset the pipe gap height
+			pipeReduceCount = PIPE_GAP_REDUCE; // Init the pipe gap reduction counter
+		}
+
+		OLED_Refresh();  // Finally draw this thang
+	}
+}
+
+void drawInfo(void)
+{
+  int8_t ulStart;     // Start of underline to indicate sound status
+  int8_t ulLength;    // Length of underline
+
+  OLED_ShowString(6,3,"A,B,Up,Down: Jump",FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+  OLED_ShowString(6,51,"Left: Sound On/Off",FLAPPY_FONTSIZE,FLAPPY_FONTSIZE_MODE);
+
+	/*
+  if (arduboy.audio.enabled()) {
+    ulStart = 13 * 6;
+    ulLength = 2 * 6 - 1;
+  } else {
+    ulStart = 16 * 6;
+    ulLength = 3 * 6 - 1;
+  }*/
+	ulStart = 16 * 6;
+  ulLength = 3 * 6 - 1;
+	
+  //OLED_DrawLine(ulStart, 51 + 8, ulLength, WHITE); // Underline the current sound mode
+  //OLED_DrawLine(ulStart, 51 + 9, ulLength, WHITE);
+}
+
+void drawFloor(void)
+{
+  //OLED_DrawLine(0, HEIGHT-1, WIDTH, WHITE);
+}
+
+void drawFloaty(void)
+{
+  ballFlapper--;
+  if (ballFlapper < 0) { ballFlapper = BALL_RADIUS; }  // Flapper starts at the top of the ball
+  OLED_DrawCircle(BALL_X, ballY, BALL_RADIUS, BLACK);  // Black out behind the ball
+  OLED_DrawCircle(BALL_X, ballY, BALL_RADIUS, WHITE);  // Draw outline
+  OLED_DrawLine(BALL_X, ballY, BALL_X - (BALL_RADIUS+1), ballY - ballFlapper, WHITE);  // Draw wing
+  OLED_DrawPoint(BALL_X - (BALL_RADIUS+1), ballY - ballFlapper + 1, WHITE);  // Dot the wing
+  OLED_DrawPoint(BALL_X + 1, ballY - 2, WHITE);  // Eye
+}
+
+void drawPipes(void)
+{
+  for (int8_t x = 0; x < PIPE_ARRAY_SIZE; x++){
+    if (pipes[0][x] != 0) {    // Value set to 0 if array element is inactive,
+                               // otherwise it is the xvalue of the pipe's left edge
+      // Pipes
+      OLED_DrawRect(pipes[0][x], -1, PIPE_WIDTH, pipes[1][x], WHITE);
+      OLED_DrawRect(pipes[0][x], pipes[1][x] + pipeGap, PIPE_WIDTH, HEIGHT - pipes[1][x] - pipeGap, WHITE);
+      // Caps
+      OLED_DrawRect(pipes[0][x] - PIPE_CAP_WIDTH, pipes[1][x] - PIPE_CAP_HEIGHT, PIPE_WIDTH + (PIPE_CAP_WIDTH*2), PIPE_CAP_HEIGHT, WHITE);
+      OLED_DrawRect(pipes[0][x] - PIPE_CAP_WIDTH, pipes[1][x] + pipeGap, PIPE_WIDTH + (PIPE_CAP_WIDTH*2), PIPE_CAP_HEIGHT, WHITE);
+      // Detail lines
+      OLED_DrawLine(pipes[0][x]+2, 0, pipes[0][x]+2, pipes[1][x]-5, WHITE);
+      OLED_DrawLine(pipes[0][x]+2, pipes[1][x] + pipeGap + 5, pipes[0][x]+2, HEIGHT - 3,WHITE);
+    }
+  }
+}
+
+void generatePipe(void)
+{
+  for (int8_t x = 0; x < PIPE_ARRAY_SIZE; x++) {
+    if (pipes[0][x] == 0) { // If the element is inactive
+      pipes[0][x] = WIDTH;  // Then create it starting right of the screen
+      pipes[1][x] = random_num(PIPE_MIN_HEIGHT, HEIGHT - PIPE_MIN_HEIGHT - pipeGap);
+      return;
+    }
+  }
+}
+
+BOOLEAN checkPipe(int8_t x)
+{  // Collision detection, x is pipe to check
+  int8_t AxA = BALL_X - (BALL_RADIUS-1);  // Hit box for floaty is a square
+  int8_t AxB = BALL_X + (BALL_RADIUS-1);  // If the ball radius increases too much, corners
+  int8_t AyA = ballY - (BALL_RADIUS-1);  // of the hitbox will go outside of floaty's
+  int8_t AyB = ballY + (BALL_RADIUS-1);  // drawing
+  int8_t BxA, BxB, ByA, ByB;
+
+  // check top cylinder
+  BxA = pipes[0][x];
+  BxB = pipes[0][x] + PIPE_WIDTH;
+  ByA = 0;
+  ByB = pipes[1][x];
+  if (AxA < BxB && AxB > BxA && AyA < ByB && AyB > ByA) { return TRUE; } // Collided with top pipe
+
+  // check top cap
+  BxA = pipes[0][x] - PIPE_CAP_WIDTH;
+  BxB = BxA + PIPE_WIDTH + (PIPE_CAP_WIDTH*2);
+  ByA = pipes[1][x] - PIPE_CAP_HEIGHT;
+  if (AxA < BxB && AxB > BxA && AyA < ByB && AyB > ByA) { return TRUE; } // Collided with top cap
+
+  // check bottom cylinder
+  BxA = pipes[0][x];
+  BxB = pipes[0][x] + PIPE_WIDTH;
+  ByA = pipes[1][x] + pipeGap;
+  ByB = HEIGHT-1;
+  if (AxA < BxB && AxB > BxA && AyA < ByB && AyB > ByA) { return TRUE; } // Collided with bottom pipe
+
+  // check bottom cap
+  BxA = pipes[0][x] - PIPE_CAP_WIDTH;
+  BxB = BxA + PIPE_WIDTH + (PIPE_CAP_WIDTH*2);
+  ByB = ByA + PIPE_CAP_HEIGHT;
+  if (AxA < BxB && AxB > BxA && AyA < ByB && AyB > ByA) { return TRUE; } // Collided with bottom pipe
+
+  return FALSE; // Nothing hits
+}
+
+BOOLEAN jumpPressed(void)
+{ 
+	// Return "true" if a jump button is pressed
+	int16_t y;
+	y=Get_JoystickY();
+	if(y>3000)
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+
+void beginJump(void)
+{
+	/*
+  if (!sound.playing()) {   // Play "flap" sound only if nothing is playing
+   sound.tone(NOTE_C1, 125);
+  }*/
+  ballV = BALL_JUMP_VELOCITY;
+  ballFrame = 0;
+  ballYi = ballY;
+}
+
+void startFalling(void)
+{   // Start falling from current height
+  ballFrame = 0;        // Start a new fall
+  ballYi = ballY;       // Set initial arc position
+  ballV = 0;            // Set velocity to 0
+}
+
+void moveFloaty(void)
+{
+  ballYprev = ballY;                   // Save the previous height
+  ballFrame++;                         // Next frame
+  ballV += (BALL_ACCELERATION / 2);    // Increase the velocity
+                                     // Calculate Floaty's new height:
+  ballY = ((((ballV * ballFrame)       // Complete "distance from initial height" calculation
+           + (NEG_OFFSET << FRAC_BITS) // Add an offset to make sure the value is positive
+           + (1 << (FRAC_BITS - 1)))   // Add 0.5 to round up
+            >> FRAC_BITS)              // shift down to remove the fraction part
+             - NEG_OFFSET)             // Remove previously added offset
+              + ballYi;                // Add the result to the start height to get the new height
+}
+
+void debounceButtons(void)
+{ 
+	// prevent "noisy" buttons from appearing as multiple presses
+  while(!Check_ButtonsState()); // Wait for all keys released
+  rt_thread_mdelay(100);
+}
+
+int8_t getOffset(unsigned int s)
+{
+  if (s > 9999) { return 24; }
+  if (s > 999) { return 18; }
+  if (s > 99) { return 12; }
+  if (s > 9) { return 6; }
+  return 0;
+}
+
+uint8_t Check_ButtonsState(void)
+{
+	int16_t x,y;
+	x=Get_JoystickX();
+	y=Get_JoystickY();
+	if(x<1500 || x>2500 || y<1500 || y>2500)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+uint32_t random_num(uint32_t num_start,uint32_t num_stop)
+{
+	uint32_t num;
+	num=rand()%num_stop;
+	while(num<num_start)
+	{
+		num=rand()%num_stop;
+	}
+	return num;
+}

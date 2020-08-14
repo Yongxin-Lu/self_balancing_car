@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name 24rf_rc)(type Legacy)(uri ${KIPRJMOD}/24rf_rc.lib)(options "")(descr ""))
+  (lib (name 24RF_Remote_Control-rescue)(type Legacy)(uri ${KIPRJMOD}/24RF_Remote_Control-rescue.lib)(options "")(descr ""))
+  (lib (name project_stander_elec-rescue)(type Legacy)(uri C:/Users/simon/Desktop/Project_Stander/project_stander_elec_v1/project_stander_elec-rescue.lib)(options "")(descr ""))
+)

@@ -1,0 +1,6 @@
+--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\StdPeriph_Drivers\inc -I .\Hardwar_Drivers\inc -I .\CMSIS\device -I .\CMSIS\core -I .\Source -I .\Hardwar_Drivers\src\eMPL
+-I.\RTE\_Target_1
+-Id:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+-Id:\Keil_v5\ARM\CMSIS\Include
+-D__UVISION_VERSION="529" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+-o .\objects\volt_adc.o --omf_browse .\objects\volt_adc.crf --depend .\objects\volt_adc.d "Hardwar_Drivers\src\volt_adc.c"

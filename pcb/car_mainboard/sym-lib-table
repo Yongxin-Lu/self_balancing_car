@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name project_stander_elec-rescue)(type Legacy)(uri ${KIPRJMOD}/project_stander_elec-rescue.lib)(options "")(descr ""))
+  (lib (name mpu6050)(type Legacy)(uri ${KIPRJMOD}/mpu6050.lib)(options "")(descr ""))
+  (lib (name ch340e)(type Legacy)(uri ${KIPRJMOD}/ch340e.lib)(options "")(descr ""))
+)

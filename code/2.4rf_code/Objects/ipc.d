@@ -1,0 +1,11 @@
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\src\ipc.c
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\include\rtthread.h
+.\objects\ipc.o: .\RTE\RTOS\rtconfig.h
+.\objects\ipc.o: .\RTE\_Target_1\RTE_Components.h
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\include\rtdebug.h
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\include\rtdef.h
+.\objects\ipc.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\include\rtservice.h
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\include\rtm.h
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\include\rtthread.h
+.\objects\ipc.o: d:\Keil_v5\packs\RealThread\RT-Thread\3.1.3\include\rthw.h

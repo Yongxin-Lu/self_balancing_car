@@ -1,0 +1,38 @@
+### Module positions - created on 07/04/20 15:59:17 ###
+### Printed by Pcbnew version pcbnew (5.1.6)-1
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                   Package                                               PosX       PosY       Rot  Side
+C1        1uF                   C_0603_1608Metric                                   7.6606    36.0451    0.0000  top
+C2        4.7uF                 C_0603_1608Metric                                  14.5821    38.6563  270.0000  top
+C3        4.7uF                 C_0603_1608Metric                                   7.6606    39.2015  180.0000  top
+C4        1uF                   C_0603_1608Metric                                   6.6091    41.1150  180.0000  top
+C5        1uF                   C_0603_1608Metric                                   6.6091    45.5955  180.0000  top
+C19       100nF                 C_0603_1608Metric                                  23.4315    37.2008   90.0000  top
+C20       100nF                 C_0603_1608Metric                                   3.2436    25.1257    0.0000  top
+C21       100nF                 C_0603_1608Metric                                  31.6865    25.1257  180.0000  top
+D1        USER                  C_0603_1608Metric                                  27.7435     3.4193  315.0000  top
+D2        CHG                   C_0603_1608Metric                                  30.1588     5.8346  315.0000  top
+D4        POWER                 C_0603_1608Metric                                  32.5742     8.2499  315.0000  top
+D6        1N4148WT              D_SOD-523                                           2.9083    12.4257   90.0000  top
+Q1        S8050-Transistor_BJT  SOT-23                                              6.3155    15.6681  270.0000  top
+R1        10k                   C_0603_1608Metric                                  14.5720    35.5803  270.0000  top
+R2        15k                   C_0603_1608Metric                                  11.2497    33.9928   90.0000  top
+R3        1.5k                  C_0603_1608Metric                                   7.6606    37.6233    0.0000  top
+R4        3k                    C_0603_1608Metric                                  13.0505    33.9903   90.0000  top
+R5        5.1k                  C_0603_1608Metric                                  28.9512     4.6269  315.0000  top
+R6        5.1k                  C_0603_1608Metric                                  10.7340    40.7848    0.0000  top
+R7        5.1k                  C_0603_1608Metric                                  31.3665     7.0423  135.0000  top
+R17       1k                    C_0603_1608Metric                                   7.3105    18.9775  270.0000  top
+R18       10k                   C_0603_1608Metric                                   5.7103    18.9775   90.0000  top
+R20       10k                   C_0603_1608Metric                                  21.3284     3.8024   90.0000  top
+R21       10k                   C_0603_1608Metric                                  20.1955    37.2593  270.0000  top
+R22       10k                   C_0603_1608Metric                                  21.8383    37.2417   90.0000  top
+R23       5.1k                  C_0603_1608Metric                                  26.5358     2.2116  315.0000  top
+R25       10k                   C_0603_1608Metric                                  28.6250    18.8250    0.0000  top
+R26       10R                   C_0603_1608Metric                                   2.1234    10.2337    0.0000  top
+SW1       LEFT                  SW_SPST_CK_RS282G05A3                               6.6853    28.0924    0.0000  top
+SW2       RIGHT                 SW_SPST_CK_RS282G05A3                              28.2444    28.0924  180.0000  top
+U1        BQ24075               QFN-16-1EP_3x3mm_P0.5mm_EP1.7x1.7mm_ThermalVias    11.5513    37.7148  180.0000  top
+U2        LP5912                WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm                  6.7488    43.3426  270.0000  top
+## End
