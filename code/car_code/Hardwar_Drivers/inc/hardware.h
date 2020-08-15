@@ -21,9 +21,9 @@
 #include "buzzer.h"
 
 #define SLEEP_TIME       200      //ms, car will stop moving if doesn't rx data over this time.
-#define STOP_TIME    900000   //ms, =15mins, motors will shutdown if doesn't rx data over this time.
-#define VOLT_STOP_VALUE  3.3      //v
-#define FALL_ALARM_TIME  800      //ms, beep() once per this time.
+#define STOP_TIME     300000      //ms, =5mins, motors will shutdown if doesn't rx data over this time.
+#define VOLT_STOP_VALUE  3.2      //v
+#define FALL_ALARM_TIME  800      //ms, beep() once per this time.	
 
 void Hardware_Init(void);
 

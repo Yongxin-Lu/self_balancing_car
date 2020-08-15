@@ -68,6 +68,8 @@
 #define TX_PAYLO_WIDTH 4
 #define RX_PAYLO_WIDTH 4
 
+#define RF_SETUP_VALUE 0x20
+
 #define SI24R1AddrMax 50 //NRF最后一个字节地址最大为50
 
 void SI24R1_Init(void);

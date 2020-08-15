@@ -29,8 +29,9 @@ int16_t rightSpeed;
 extern volatile int16_t carMove;
 extern volatile int16_t carTurn;
 
-int16_t maxMove=75;
-int16_t maxTurn=2000;
+//Speed limit.
+uint16_t maxMove=75;
+uint16_t maxTurn=2100;
 
 uint16_t rx_data[2]={2040,2040};
 
@@ -73,6 +74,8 @@ int main(void)
 		{
 			Play_Beep();
 			LED_OFF();
+			Motor_Set(LEFT,0);
+			Motor_Set(RIGHT,0);
 			while(1);
 		}
 		
@@ -110,7 +113,10 @@ int main(void)
 		//Shutdown power when reach this time.
 		if(stopTimeCount>=STOP_TIME)
 		{
+			Play_Beep();
 			LED_OFF();
+			Motor_Set(LEFT,0);
+			Motor_Set(RIGHT,0);
 			while(1);
 		}
 		
@@ -129,11 +135,11 @@ int main(void)
 		//Caculate the carTurn value
 		if(rx_data[1]<2020)
 		{
-			carTurn=-(2020-rx_data[1])/(2020/maxTurn);
+			carTurn=-(2020-rx_data[1])/(2020/(float)maxTurn);
 		}
 		else if(rx_data[1]>2060)
 		{
-			carTurn=(rx_data[1]-2060)/(2036/maxTurn);
+			carTurn=(rx_data[1]-2060)/(2036/(float)maxTurn);
 		}
 		else{
 			carTurn=0;

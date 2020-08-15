@@ -20,6 +20,8 @@
 #include "w25q128.h"
 #include "systick.h"
 
+#define RF_SLEEP_TIME 4   //if joystick don't move over this time, rf chip will stop tx.
+
 void Hardware_Init(void);
 
 #endif /* HARDWARE_H_ */

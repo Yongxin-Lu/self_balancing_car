@@ -10,14 +10,14 @@
 
 #include "hardware.h"
 
-#define RF_SLEEP_TIME 4   //if joystick don't move over this time, rf chip will stop tx.
-
 uint16_t tx_data[2];
 uint8_t time2count=0;
 
 int main(void)
 {	
 	Hardware_Init();
+	
+	Play_Beep();
 	
 	SI24R1_TxMode();
 	Delay_ms(100);

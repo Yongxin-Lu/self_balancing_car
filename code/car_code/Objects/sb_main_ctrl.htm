@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\sb_main_ctrl.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\sb_main_ctrl.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Aug 14 22:59:57 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Aug 15 13:46:48 2020
 <BR><P>
 <H3>Maximum Stack Usage =        348 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -799,7 +799,7 @@ Global Symbols
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[86]"></a>Hardware_Init</STRONG> (Thumb, 166 bytes, Stack size 16 bytes, hardware.o(i.Hardware_Init))
+<P><STRONG><a name="[86]"></a>Hardware_Init</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, hardware.o(i.Hardware_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 348 + Unknown Stack Size
 <LI>Call Chain = Hardware_Init &rArr; mpu_dmp_get_data &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; MPU_Read_Len &rArr; MPU_IIC_Read_Byte &rArr; MPU_IIC_NAck &rArr; MPU_IIC_Delay &rArr; Delay_us &rArr; SysTick_Config
 </UL>
@@ -956,8 +956,7 @@ Global Symbols
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_IIC_Start
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_IIC_Send_Byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
@@ -972,6 +971,7 @@ Global Symbols
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_accel_fsr
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
 </UL>
 
 <P><STRONG><a name="[7a]"></a>Motor_Encoder_Init</STRONG> (Thumb, 156 bytes, Stack size 32 bytes, drv8833c.o(i.Motor_Encoder_Init))
@@ -1021,7 +1021,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DRV8833C_Init
 </UL>
 
-<P><STRONG><a name="[108]"></a>Motor_Set</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, drv8833c.o(i.Motor_Set))
+<P><STRONG><a name="[107]"></a>Motor_Set</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, drv8833c.o(i.Motor_Set))
 <BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1084,7 +1084,7 @@ Global Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[107]"></a>Read_Encoder</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, drv8833c.o(i.Read_Encoder))
+<P><STRONG><a name="[108]"></a>Read_Encoder</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, drv8833c.o(i.Read_Encoder))
 <BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1676,7 +1676,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inv_orientation_matrix_to_scalar
 </UL>
 
-<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 738 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 812 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 348 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Hardware_Init &rArr; mpu_dmp_get_data &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; MPU_Read_Len &rArr; MPU_IIC_Read_Byte &rArr; MPU_IIC_NAck &rArr; MPU_IIC_Delay &rArr; Delay_us &rArr; SysTick_Config
 </UL>
@@ -1686,10 +1686,10 @@ Global Symbols
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;balance_UP
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SI24R1_RxPacket
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SI24R1_RxMode
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Encoder
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Encoder
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_NokiaTune
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Beep
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Set
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Set
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Gyroscope
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hardware_Init
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_BattVolt
@@ -1698,6 +1698,10 @@ Global Symbols
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 </UL>
@@ -1714,10 +1718,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
-<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
+<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
 </UL>
 
 <P><STRONG><a name="[8d]"></a>mpu_dmp_get_data</STRONG> (Thumb, 544 bytes, Stack size 136 bytes, inv_mpu.o(i.mpu_dmp_get_data))
@@ -1927,8 +1931,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
-<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
+<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
 </UL>
 
 <P><STRONG><a name="[114]"></a>mpu_set_lpf</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_lpf))
@@ -1936,18 +1940,18 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
-<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
+<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
 </UL>
 
 <P><STRONG><a name="[10f]"></a>mpu_set_sample_rate</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_sample_rate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; set_int_enable &rArr; MPU_Write_Len &rArr; MPU_IIC_Wait_Ack &rArr; MPU_IIC_Stop &rArr; MPU_IIC_Delay &rArr; Delay_us &rArr; SysTick_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
@@ -2214,6 +2218,7 @@ Global Symbols
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_BattVolt
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 </UL>
 
@@ -2239,6 +2244,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;velocity
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;balance_UP
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[136]"></a>_ffix</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, ffix.o(x$fpl$ffix), UNUSED)
@@ -2262,6 +2268,7 @@ Global Symbols
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;balance_UP
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[173]"></a>_fflt</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$fflt), UNUSED)
@@ -2269,6 +2276,7 @@ Global Symbols
 <P><STRONG><a name="[81]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
 <BR><BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_BattVolt
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 </UL>
 
