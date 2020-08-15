@@ -84,7 +84,7 @@ uint8_t MPU_Set_Rate(u16 rate)
 
 //得到温度值
 //返回值:温度值(扩大了100倍)
-short MPU_Get_Temperature(void)
+float MPU_Get_Temperature(void)
 {
   uint8_t buf[2]; 
   short raw;
@@ -92,7 +92,7 @@ short MPU_Get_Temperature(void)
 	MPU_Read_Len(MPU_ADDR,MPU_TEMP_OUTH_REG,2,buf); 
   raw=((u16)buf[0]<<8)|buf[1];  
   temp=36.53+((double)raw)/340;  
-  return temp*100;;
+  return temp;
 }
 //得到陀螺仪值(原始值)
 //gx,gy,gz:陀螺仪x,y,z轴的原始读数(带符号)

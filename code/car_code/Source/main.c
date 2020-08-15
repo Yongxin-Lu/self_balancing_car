@@ -12,6 +12,7 @@
 #include "pid.h"
 
 extern float BattVolt;
+
 uint8_t sleepFlag=0;
 uint16_t fallAlarmCount=0;
 int16_t sleepTimeCount=0;
@@ -31,9 +32,10 @@ extern volatile int16_t carTurn;
 
 //Speed limit.
 uint16_t maxMove=75;
-uint16_t maxTurn=2100;
+uint16_t maxTurn=2000;
 
-uint16_t rx_data[2]={2040,2040};
+uint16_t rx_data[3]={2040,2040,0};
+float tx_data[2];  //first data is temp ,second is volt.
 
 int main(void)
 {	
@@ -65,7 +67,8 @@ int main(void)
  *
  ***************************************************************/
 	SI24R1_RxMode();
-	Delay_ms(100);
+	Delay_ms(1);
+	
 	while(1)
 	{
 		//Monitor battery volt.
@@ -79,9 +82,19 @@ int main(void)
 			while(1);
 		}
 		
-		//Receive Datas from Remote Controller
+		//Receive Data from Remote Controller
 		if(!SI24R1_RxPacket((uint8_t *)rx_data))
 		{
+			//Response request.
+			if(rx_data[2]==1)
+			{
+				SI24R1_TxMode();
+				Delay_ms(1);
+				tx_data[0]=MPU_Get_Temperature();
+				tx_data[1]=BattVolt;
+				SI24R1_TxPacket((uint8_t *)tx_data);
+				SI24R1_RxMode();
+			}
 			sleepTimeCount=0;
 			stopTimeCount=0;
 			LED_ON();
@@ -92,7 +105,7 @@ int main(void)
 			stopTimeCount++;
 		}
 		
-		//Reset the rx_data when reach 500ms.
+		//Reset the rx_data when reach the time.
 		if(sleepTimeCount>=SLEEP_TIME)
 		{
 			sleepTimeCount=0;
@@ -110,7 +123,7 @@ int main(void)
 			}
 		}
 		
-		//Shutdown power when reach this time.
+		//Shutdown power when reach setting time.
 		if(stopTimeCount>=STOP_TIME)
 		{
 			Play_Beep();

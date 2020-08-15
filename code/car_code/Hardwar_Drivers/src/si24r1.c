@@ -85,7 +85,7 @@ void SI24R1_SPI_Init(void)
 	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
 	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;    //2.25M
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;    //4.5M
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
 	SPI_InitStructure.SPI_CRCPolynomial = 7;
 	SPI_Init(SPI2,&SPI_InitStructure);
@@ -190,11 +190,10 @@ void SI24R1_RxMode(void)
 
 uint8_t SI24R1_TxPacket(uint8_t *txbuf)
 {
-	//uint8_t status;
+	uint8_t status;
 	SPI2_CE_LOW();
 	SI24R1_Write_Buf(W_RX_PAYLOAD,txbuf,TX_PAYLO_WIDTH);
 	SPI2_CE_HIGH();
-	/*
 	while(SI24R1_IRQ()!=0);
 	status=SI24R1_Read_Reg(STATUS);
 	SI24R1_Write_Reg(W_REGISTER+STATUS,status);
@@ -207,7 +206,6 @@ uint8_t SI24R1_TxPacket(uint8_t *txbuf)
 	{
 		return TX_OK;
 	}
-	*/
 	return 0xff;
 }
 

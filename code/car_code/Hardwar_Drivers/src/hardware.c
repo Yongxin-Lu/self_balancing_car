@@ -64,6 +64,7 @@ void Hardware_Init(void)
 	
 /******************Si24r1 Init**********************/
 	SI24R1_Init();
+	Delay_ms(100);  //According to daatasheet pages 22, power on reset 100ms.
 	while(!SI24R1_Check())
 	{
 		LED_OFF();

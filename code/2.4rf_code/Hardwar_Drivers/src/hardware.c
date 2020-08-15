@@ -36,13 +36,9 @@ void Hardware_Init(void)
 	printf("MPU6050 DMP INIT.\n");
 	
 	//SI24R1 Init
-	//Delay_ms(1000);
 	SI24R1_Init();
-	//Delay_ms(1000);
-	while(SI24R1_Check())
-	{
-		Delay_ms(1);
-	}
+	Delay_ms(100);  //According to daatasheet pages 22, power on reset 100ms.
+	while(SI24R1_Check());
 	printf("SI24R1 CHECK OK.\n");
 	
 	//ADC Init

@@ -67,10 +67,10 @@
 
 #define TX_ADR_WIDTH 5
 #define RX_ADR_WIDTH 5
-#define TX_PAYLO_WIDTH 4
-#define RX_PAYLO_WIDTH 4
+#define TX_PAYLO_WIDTH 8
+#define RX_PAYLO_WIDTH 6
 
-#define RF_SETUP_VALUE 0x20
+#define RF_SETUP_VALUE 0x0f  //0dbm, 2mbps
 
 #define SI24R1AddrMax 50 //NRF最后一个字节地址最大为50
 

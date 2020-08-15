@@ -104,7 +104,7 @@ uint8_t MPU_Set_Rate(u16 rate);
 uint8_t MPU_Set_Fifo(uint8_t sens);
 
 
-short MPU_Get_Temperature(void);
+float MPU_Get_Temperature(void);
 uint8_t MPU_Get_Gyroscope(short *gx,short *gy,short *gz);
 uint8_t MPU_Get_Accelerometer(short *ax,short *ay,short *az);
 
