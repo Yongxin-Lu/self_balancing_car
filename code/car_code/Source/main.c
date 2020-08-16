@@ -34,7 +34,7 @@ extern volatile int16_t carTurn;
 uint16_t maxMove=75;
 uint16_t maxTurn=2000;
 
-uint16_t rx_data[3]={2040,2040,0};
+uint16_t rx_data[3]={2040,2040,0};  //joystick y,x,get temp&volt request.
 float tx_data[2];  //first data is temp ,second is volt.
 
 int main(void)

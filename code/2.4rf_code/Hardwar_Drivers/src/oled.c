@@ -675,6 +675,18 @@ void OLED_PrintNum(u16 num)
 	}
 }
 
+void OLED_PrintFloat(float num)
+{
+	unsigned char j=0;
+	char chr[6];
+	sprintf(chr, "%.2f", num); 
+	while (chr[j]!='\0')
+	{		
+		OLED_Write(chr[j]);
+		j++;
+	}
+}
+
 //´ø×ø±ê´òÓ¡×Ö·û´®
 size_t OLED_PrintCharEx(int16_t x, int16_t y,char *chr)
 {

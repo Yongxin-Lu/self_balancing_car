@@ -68,6 +68,7 @@ void OLED_ShowString(u8 x,u8 y,char *chr);//OLED显示字符串
 void SetCursor(int16_t x, int16_t y);//设置坐标
 void OLED_PrintChar( char *chr);//打印字符串
 void OLED_PrintNum(u16 num);//打印数字
+void OLED_PrintFloat(float num);
 size_t OLED_PrintCharEx(int16_t x, int16_t y,char *chr);////带坐标打印字符串
 
 int fputc(int ch, FILE *f);
